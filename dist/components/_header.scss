@@ -1,0 +1,148 @@
+.header {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.945);
+    &__wrapper {
+        @include flexBox;
+        padding: 1rem 1.5rem;
+        .branding {
+            img {
+                width: 8.5rem;
+            }
+        }
+        .header__nav {
+            @include flexBox(unset, center);
+            border-top: 1px solid transparent;
+            flex-direction: column;
+            position: absolute;
+            background: $clr-dirtywhite;
+            width: 100%;
+            left: 0;
+            top: 8.3rem;
+            height: 0rem;
+            overflow: hidden;
+            gap: 4rem;
+            @include transitionEase;
+            &.open {
+                height: 63vh;
+                border-top: 1px solid $clr-gray;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                width: 100%;
+                padding: 3rem 2.5rem;
+                li{
+                    display: flex;
+                    &:hover a {
+                        color: $clr-dark;
+                    }
+                    a{
+                        @include transitionEase;
+                        color: $clr-gray;
+                        font-weight: 600;
+                        font-size: 20px;
+                    }
+                }
+            }
+            .header__btn__mobile {
+                display: flex;
+                a {
+                    @include transitionEase;
+                    @include btnFormat(1rem 17rem);
+                    &:hover {
+                        @include transformScale;
+                    }
+                }
+            }
+        }
+        .header__btn {
+            display: none;
+            &:hover a {
+                @include transformScale;
+            }
+            a{
+                @include transitionEase;
+                display: flex;
+            }
+        }
+        .burger__btn {
+            @include flexBox(center, center);
+            flex-direction: column;
+            gap: 0.3rem;
+            background: $clr-dirtywhite;
+            border-radius: 50px;
+            padding: 1.45rem 1.1rem;
+            &.open {
+                span {
+                    &:nth-child(2){
+                        opacity: 0;
+                    }
+                    &:nth-child(1){
+                        transform: translate(0px, 5.5px) rotate(45deg);
+                    }
+                    &:nth-child(3){
+                        transform: translate(0px, -5.5px) rotate(-45deg);
+                    }
+                }
+            }
+            span{
+                @include transitionEase;
+                display: block;
+                @include burgerBtn;
+            }
+        }
+    }
+    @include mediaQuery($brkpnt-xl) {
+        .container {
+            max-width: 145rem;
+        }
+        &__wrapper{
+            .header__nav {
+                @include flexBox(center);
+                position: relative;
+                opacity: 100%;
+                height: auto;
+                top: auto;
+                padding: 0;
+                border: none;
+                left: auto;
+                width: auto;
+                background: transparent;
+                overflow: unset;
+                &.open {
+                    height: 0vh;
+                    border: none;
+                }
+                ul{
+                    padding: 0;
+                    flex-direction: row;
+                    gap: 5rem;
+                    li{
+                        &:hover a {
+                            @include transformScale;
+                        }
+                        a{
+                            font-size: 18px;
+                        }
+                    }
+                }
+                .header__btn__mobile {
+                    display: none;
+                }
+            }
+            .header__btn {
+                display: block;
+                a{
+                    @include btnFormat(1.5rem 2.2rem);
+                    font-size: 18px;
+                }
+            }
+            .burger__btn {
+                display: none;
+            }
+        }
+    }
+}

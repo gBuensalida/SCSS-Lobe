@@ -1,0 +1,38 @@
+.train {
+    padding: 5rem 0;
+    &__wrapper {
+        @include flexBox(center, center);
+        flex-direction: column;
+        .train__text {
+            max-width: 30rem;
+            h1 {
+                text-align: center;
+                line-height: 4.3rem;
+                font-size: 38px;
+                font-weight: 600;
+            }
+        }
+        .train__btn {
+            margin: 3rem;
+            display: flex;
+            a {
+                @include transitionEase;
+                &:hover {
+                    @include transformScale;
+                }
+                @include btnFormat(1rem 3rem);
+            }
+        }
+    }
+    @include mediaQuery($brkpnt-xl) {
+        &__wrapper {
+            .train__text {
+                max-width: 50rem;
+                h1 {
+                    line-height: 7rem;
+                    font-size: 64px;
+                }
+            }
+        }
+    }
+}

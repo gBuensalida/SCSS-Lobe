@@ -1,0 +1,30 @@
+@mixin flexBox ($justify: space-between, $align: center){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin btnFormat($pad: 1rem 2rem, $font-size: 20px) {
+    color: $clr-light;
+    padding: $pad;
+    background: $clr-mintgreen;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: $font-size;
+}
+@mixin burgerBtn {
+    background-color: $clr-dark;
+    height: 0.25rem;
+    width: 2rem;
+    border-radius: 30px;
+}
+@mixin transitionEase($dur: 0.5s) {
+    transition: $dur ease;
+}
+@mixin transformScale($mul: 1.05) {
+    transform: scale($mul);
+}
+@mixin mediaQuery($width: $brkpnt-sm) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
